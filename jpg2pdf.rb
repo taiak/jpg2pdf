@@ -15,7 +15,7 @@ class Jpg2Pdf
   end
 
   def sorted_all_images_name
-    Dir.glob("#{@prefix}*#{@suffix}.#{extension}").sort_by { |s| s[/\d+/].to_i }
+    Dir.glob("#{@prefix}*#{@suffix}.#{@extension}").sort_by { |s| s[/\d+/].to_i }
   end
 
   def all_images_name
