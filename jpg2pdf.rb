@@ -33,12 +33,27 @@ class Jpg2Pdf
     true
   end
 
+  def rotate_all(images, way)
+    images.each do |im|
+      sizes = FastImage.size im
+      p sizes
+      if sizes[0] > sizes[1]
+        puts "#{im} değişiyo..."
+        system "convert #{im} -rotate #{way} #{im}" 
+      end
+    end
+  end
+
   def convert
     image_names = sorted_all_images_name
     return false unless image_names
 
     return false unless images_supported? image_names
+    rotate_all image_names, "90"
+
     size = FastImage.size image_names.first
+    p image_names
+    p size
     begin
       Prawn::Document.generate("#{@pdf_name}.pdf", :page_size => size, :margin => 0) do
         image image_names.first, :at => [0, size[-1]]
@@ -55,7 +70,7 @@ class Jpg2Pdf
   end
 end
 
-j = Jpg2Pdf.new suffix: '_uc', pdf_name: 'deneme'
-p j.sorted_all_images_name
+j = Jpg2Pdf.new pdf_name: 'deneme', extension: 'JPG'
+#p j.sorted_all_images_name
 p j.convert
 `xdg-open deneme.pdf`
