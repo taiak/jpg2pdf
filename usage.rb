@@ -2,7 +2,6 @@
 
 load 'jpg2pdf.rb'
 
-
 # Not: resim dosyaları bu dosyayla aynı dizinde olmalıdır
 
 # tag_info türkçe karakter girilmeden yazılmalıdır. 
@@ -20,6 +19,7 @@ tag_info = {
 # kalite optimizasyonu istenmiyorsa
 # quality = false yapılmalıdır
 quality = '200k'
+
 # "Resim (1).jpg" "Resim (2).jpg" şeklinde ilerleryen bir dizide
 # sayıların öncesi prefix, sonrası suffix olarak ayarlanmalıdır
 prefix = 'Resim ('
