@@ -107,7 +107,7 @@ class Jpg2Pdf
     # TODO: unicode desteği ekle
     #begin
       Prawn::Document.generate(@pdf_name, page_size: sizes, margin: 0) do
-        bounding_box([0, text_location], width: bounds.width, height: bounds.height, font: 'TTimesb.ttf') do
+        bounding_box([0, text_location], width: bounds.width, height: bounds.height) do
           text lesson, align: :center, size: 300
           move_down 50
           text year, align: :center, size: 250
