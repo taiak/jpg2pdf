@@ -105,7 +105,7 @@ class Jpg2Pdf
     @log.info 'Pdf generate start...'
     # TODO: omu dökümantasyon ilk sayfaya resim şeklinde eklenecek
     # TODO: unicode desteği ekle
-    #begin
+    begin
       Prawn::Document.generate(@pdf_name, page_size: sizes, margin: 0) do
         bounding_box([0, text_location], width: bounds.width, height: bounds.height) do
           text lesson, align: :center, size: 300
@@ -125,10 +125,10 @@ class Jpg2Pdf
       end
       @log.info 'Pdf generation finish with success!'
       true
-    #rescue StandardError
-    #  @log.error 'Pdf generation fault!'
-    #  false
-    #end
+    rescue StandardError
+      @log.error 'Pdf generation fault!'
+      false
+    end
   end
 
   # check is hash ok
